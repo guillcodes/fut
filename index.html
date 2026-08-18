@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Várzea FC | Campeonato entre amigos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">VF</span><span>Várzea <b>FC</b></span></div>
+      <div class="season-pill"><span class="pulse"></span> Temporada 2024.2</div>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a class="nav-item active" href="#inicio"><i data-lucide="layout-dashboard"></i> Visão geral</a>
+        <a class="nav-item" href="#confrontos"><i data-lucide="swords"></i> Confrontos <span class="nav-count" id="match-nav-count">0</span></a>
+        <a class="nav-item" href="#jogadores"><i data-lucide="users"></i> Jogadores</a>
+        <a class="nav-item" href="#historico"><i data-lucide="history"></i> Histórico</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="mini-avatar">G</div><div><strong>Gabriel</strong><small>Organizador</small></div>
+        <button class="icon-button" title="Configurações"><i data-lucide="settings-2"></i></button>
+      </div>
+    </aside>
+
+    <main class="content" id="inicio">
+      <header class="topbar">
+        <div><span class="eyebrow">QUARTA-FEIRA, 18 DEZ</span><h1>Fala, Gabriel <span class="wave">👋</span></h1></div>
+        <div class="top-actions"><button class="icon-button notification" title="Notificações"><i data-lucide="bell"></i><span></span></button><button class="avatar">G</button></div>
+      </header>
+
+      <section class="hero-panel">
+        <div class="hero-copy"><span class="eyebrow accent">NOVO CAMPEONATO</span><h2>Várzea Cup <span>2024.2</span></h2><p>Cadastre a galera e monte a primeira rodada.</p><div class="hero-meta"><span><i data-lucide="user-plus"></i> Adicione os jogadores</span><span><i data-lucide="shuffle"></i> Depois faça o sorteio</span></div></div>
+        <div class="hero-ball" aria-hidden="true"><div class="ball-shape">⚽</div></div>
+        <div class="hero-next"><small>PRÓXIMO PASSO</small><div><strong>Cadastre os jogadores</strong><span>comece agora</span></div><div class="mini-match"><span class="team-dot green">+</span><b>Sua turma</b><em>→</em><b>Seu sorteio</b><span class="team-dot orange">⚽</span></div></div>
+      </section>
+
+      <section class="stats-grid" aria-label="Resumo do campeonato">
+        <article class="stat-card"><div class="stat-icon green-icon"><i data-lucide="users-round"></i></div><div><span>Jogadores</span><strong id="player-count">0</strong><small>cadastre sua turma</small></div></article>
+        <article class="stat-card"><div class="stat-icon blue-icon"><i data-lucide="trophy"></i></div><div><span>Partidas jogadas</span><strong id="match-count">0</strong><small>aguardando sorteio</small></div></article>
+        <article class="stat-card"><div class="stat-icon yellow-icon"><i data-lucide="target"></i></div><div><span>Gols marcados</span><strong id="goal-count">0</strong><small>nenhum resultado</small></div></article>
+        <article class="stat-card"><div class="stat-icon red-icon"><i data-lucide="flame"></i></div><div><span>Melhor sequência</span><strong>—</strong><small>comece a disputa</small></div></article>
+      </section>
+
+      <div class="section-heading" id="confrontos"><div><span class="eyebrow">CAMPEONATO</span><h2>Confrontos</h2></div><div class="heading-actions"><button class="secondary-button" id="reset-button"><i data-lucide="rotate-ccw"></i> Reiniciar</button><button class="primary-button" id="draw-button"><i data-lucide="shuffle"></i> Sortear confrontos</button></div></div>
+      <section class="matches-layout">
+        <div class="match-list" id="match-list"></div>
+        <aside class="ranking-panel" id="jogadores"><div class="panel-title"><div><span class="eyebrow">PERFORMANCE</span><h3>Classificação</h3></div><button class="icon-button" title="Mais opções"><i data-lucide="more-horizontal"></i></button></div><div class="table-head"><span>#</span><span>JOGADOR</span><span>PTS</span></div><div id="ranking-list"></div><button class="full-button" id="add-player-button"><i data-lucide="user-plus"></i> Adicionar jogador</button></aside>
+      </section>
+
+      <section class="bottom-grid" id="historico"><div class="activity-panel"><div class="panel-title"><div><span class="eyebrow">HISTÓRICO</span><h3>Últimas partidas</h3></div><a href="#historico">Ver histórico <i data-lucide="arrow-up-right"></i></a></div><div id="history-list"></div></div><div class="quote-panel"><i data-lucide="quote"></i><p>“A pressão aumenta, mas a resenha também.”</p><small>— Código da várzea, artigo 01</small></div></section>
+      <footer><span>Várzea FC · Feito para a resenha</span><span><i data-lucide="cloud-check"></i> Salvo automaticamente</span></footer>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="modal"><div class="modal"><button class="close-button" id="close-modal" title="Fechar"><i data-lucide="x"></i></button><span class="eyebrow accent">NOVO JOGADOR</span><h2>Quem vai entrar na disputa?</h2><p>Adicione o nome e uma sigla para identificar o jogador na tabela.</p><form id="player-form"><label>Nome completo<input id="player-name" required placeholder="Ex: Felipe" /></label><label>Sigla (2 letras)<input id="player-tag" maxlength="2" required placeholder="FE" /></label><button class="primary-button" type="submit"><i data-lucide="user-plus"></i> Adicionar jogador</button></form></div></div>
+  <div class="modal-backdrop" id="result-modal"><div class="modal"><button class="close-button" id="close-result-modal" title="Fechar"><i data-lucide="x"></i></button><span class="eyebrow accent">RESULTADO DA PARTIDA</span><h2 id="result-title">Lançar resultado</h2><p>Informe os gols de cada jogador para atualizar a classificação e o histórico.</p><form id="result-form"><label id="home-score-label">Jogador 1<input id="home-score" type="number" min="0" required value="0" /></label><label id="away-score-label">Jogador 2<input id="away-score" type="number" min="0" required value="0" /></label><button class="primary-button" type="submit"><i data-lucide="check"></i> Salvar resultado</button></form></div></div>
+  <div class="toast" id="toast"><i data-lucide="check-circle-2"></i><span>Confrontos sorteados!</span></div>
+  <script src="https://unpkg.com/lucide@latest"></script><script src="app.js"></script>
+</body>
+</html>
